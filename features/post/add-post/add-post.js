@@ -23,7 +23,7 @@ export default function AddPost() {
 
     try {
       await addPost(formData)
-      router.push('/posts')
+      router.push('/post')
     } catch (err) {
       setError('Error while creating the post.')
     } finally {

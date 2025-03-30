@@ -2,24 +2,21 @@
 
 import prisma from '../../../lib/prisma'
 import { auth } from '@clerk/nextjs/server'
-import { nanoid } from 'nanoid'
 
-export async function addPost(formData) {
-  const title = formData.get('title')
+export async function addComment(formData, postSlug) {
   const body = formData.get('body')
   const { userId } = await auth()
-
+  console.log('body : ', body, 'postSlug : ', postSlug, 'userId : ', userId)
   try {
-    await prisma.post.create({
+    await prisma.comment.create({
       data: {
-        title,
-        body,
+        body: body,
         date: new Date(),
-        slug: nanoid(10),
         clerkUserId: userId,
+        postSlug: postSlug,
       },
     })
   } catch (error) {
-    throw new Error(`Error while creating the post: ${error.message}`)
+    throw new Error(`Error while creating the comment: ${error.message}`)
   }
 }
