@@ -2,11 +2,11 @@
 
 import prisma from '@/lib/prisma'
 
-export async function deletePost(id) {
+export async function deletePost(slug) {
   try {
     await prisma.post.delete({
       where: {
-        id,
+        slug: slug,
       },
     })
   } catch (error) {

@@ -3,6 +3,9 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import ReactMarkdown from 'react-markdown'
 import { Comment } from '@/components/comment'
 import AddComment from '@/features/comment/add-comment/add-comment'
+import { Pencil } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import DeletePost from '@/features/post/delete-post/delete-post'
 
 export default async function Page({ params }) {
   const { slug } = await params
@@ -37,8 +40,16 @@ export default async function Page({ params }) {
     <div className='flex flex-col items-center'>
       <main>
         <div className='p-3 flex flex-col gap-3 items-center sm:items-start border border-solid border-black/[.08] dark:border-white/[.145] rounded-[8px]  w-[900px]'>
-          <p className='text-sm text-gray-500'>{formatDate(post.date)}</p>
-          <h2 className='font-extrabold text-4xl mt-6'>{post.title}</h2>
+          <div className='flex justify-between w-full h-8'>
+            <p className='text-sm text-gray-500'>{formatDate(post.date)}</p>
+            <div className='flex gap-1'>
+              <Button variant='outline'>
+                <Pencil />
+              </Button>
+              <DeletePost slug={post.slug}/>
+            </div>
+          </div>
+          <h2 className='font-extrabold text-4xl'>{post.title}</h2>
           <div className='flex items-center gap-2'>
             <Avatar>
               <AvatarImage src={post.user.avatar} />

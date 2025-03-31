@@ -19,7 +19,7 @@ export default async function Page() {
     <>
       <div className='flex flex-col items-center'>
         <main className='p-3 flex flex-col gap-3 items-center sm:items-start border border-solid border-black/[.08] dark:border-white/[.145] rounded-[8px]  w-[900px]'>
-          {posts === 0 && <div className='w-full flex justify-center'>No posts yet</div>}
+          {posts.length === 0 && <div className='w-full flex justify-center'>No posts yet</div>}
           {posts.map((post) => (
             <Link key={post.id} href={`/post/${post.slug}`} className='w-full'>
               <div className='flex flex-col gap-1 border border-solid border-black/[.08] dark:border-white/[.145] rounded-[8px] p-4 w-full'>

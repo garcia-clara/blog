@@ -13,6 +13,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { ClerkProvider } from '@clerk/nextjs'
 import AuthButtons from '@/components/authButtons'
+import { Toaster } from "@/components/ui/sonner"
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -63,6 +64,7 @@ export default function RootLayout({ children }) {
               </div>
             </div>
             {children}
+            <Toaster />
           </ThemeProvider>
         </body>
       </html>
