@@ -3,9 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import ReactMarkdown from 'react-markdown'
 import { Comment } from '@/components/comment'
 import AddComment from '@/features/comment/add-comment/add-comment'
-import { Pencil } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import DeletePost from '@/features/post/delete-post/delete-post'
+import PostActionButtons from '@/components/post-action-buttons'
 
 export default async function Page({ params }) {
   const { slug } = await params
@@ -43,10 +41,7 @@ export default async function Page({ params }) {
           <div className='flex justify-between w-full h-8'>
             <p className='text-sm text-gray-500'>{formatDate(post.date)}</p>
             <div className='flex gap-1'>
-              <Button variant='outline'>
-                <Pencil />
-              </Button>
-              <DeletePost slug={post.slug}/>
+              <PostActionButtons slug={post.slug} post={post} isAuthor={post.user.name} />
             </div>
           </div>
           <h2 className='font-extrabold text-4xl'>{post.title}</h2>
@@ -56,7 +51,7 @@ export default async function Page({ params }) {
             </Avatar>
             <p className='font-extrabold'>{post.user.name}</p>
           </div>
-          <p className='text-justify mt-6'>
+          <p className='text-justify'>
             <ReactMarkdown breaks>{post.body}</ReactMarkdown>
           </p>
         </div>
@@ -66,6 +61,7 @@ export default async function Page({ params }) {
       {comments.map((comment) => (
         <Comment
           key={comment.id}
+          id={comment.id}
           userName={comment.user.name}
           userAvatar={comment.user.avatar}
           body={comment.body}

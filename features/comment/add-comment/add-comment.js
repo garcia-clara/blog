@@ -5,6 +5,7 @@ import { addComment } from '@/features/comment/add-comment/add-comment.action'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import { useRouter } from 'next/navigation'
+import { toast } from 'sonner'
 
 export default function AddComment({ postSlug }) {
   const [loading, setLoading] = useState(false)
@@ -21,8 +22,10 @@ export default function AddComment({ postSlug }) {
     try {
       await addComment(formData, postSlug)
       router.refresh()
+      toast('Comment submitted ✔️')
     } catch (err) {
       setError('Error while submitting comment :' + err.message)
+      toast('Error while submitting comment ❌')
     } finally {
       setLoading(false)
     }

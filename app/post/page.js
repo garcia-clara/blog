@@ -31,7 +31,6 @@ export default async function Page() {
                     <AvatarImage src={post.user.avatar} />
                   </Avatar>
                   <p className='font-extrabold'>{post.user.name}</p>
-                  {/* <DeletePost id={post.id} /> */}
                 </div>
               </div>
             </Link>

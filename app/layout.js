@@ -12,8 +12,8 @@ import Link from 'next/link'
 import { ThemeProvider } from '@/components/theme-provider'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { ClerkProvider } from '@clerk/nextjs'
-import AuthButtons from '@/components/authButtons'
-import { Toaster } from "@/components/ui/sonner"
+import AuthButtons from '@/components/auth-buttons'
+import { Toaster } from '@/components/ui/sonner'
 
 const roboto = Roboto({
   subsets: ['latin'],

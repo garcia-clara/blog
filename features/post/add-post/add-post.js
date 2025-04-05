@@ -37,7 +37,7 @@ export default function AddPost() {
         <p className='opacity-40 text-sm'>Share your thoughts with the world!</p>
       </div>
       <div className='grid w-full max-w-sm items-center gap-1.5'>
-        <Label htmlFor='title'>Post Title</Label>
+        <Label htmlFor='title' className='text-sm font-bold'>Post Title</Label>
         <Input
           type='text'
           id='title'
@@ -47,7 +47,7 @@ export default function AddPost() {
         />
       </div>
       <div className='grid w-full gap-1.5'>
-        <Label htmlFor='body'>Post Content</Label>
+        <Label htmlFor='body' className='text-sm font-bold'>Post Content</Label>
         <Textarea
           id='body'
           name='body'

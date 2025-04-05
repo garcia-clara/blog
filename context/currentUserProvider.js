@@ -1,32 +1,32 @@
-"use client";
+'use client'
 
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect } from 'react'
 
-const UserContext = createContext(null);
+const UserContext = createContext(null)
 
 export function CurrentUserProvider({ children }) {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null)
 
   useEffect(() => {
     async function fetchUser() {
       try {
-        const res = await fetch("/api/user");
+        const res = await fetch('/api/user')
         if (!res.ok) {
-          throw new Error("Failed to fetch user");
+          throw new Error('Failed to fetch user')
         }
-        const data = await res.json();
-        setUser(data); // Inclure toutes les données utilisateur, y compris le rôle
+        const data = await res.json()
+        setUser(data) // Inclure toutes les données utilisateur, y compris le rôle
       } catch (error) {
-        console.error("Error fetching user:", error);
-        setUser(null);
+        console.error('Error fetching user:', error)
+        setUser(null)
       }
     }
-    fetchUser();
-  }, []);
+    fetchUser()
+  }, [])
 
-  return <UserContext.Provider value={user}>{children}</UserContext.Provider>;
+  return <UserContext.Provider value={user}>{children}</UserContext.Provider>
 }
 
 export function useUser() {
-  return useContext(UserContext);
+  return useContext(UserContext)
 }

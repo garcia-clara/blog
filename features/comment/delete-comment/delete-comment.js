@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button'
 import { Trash2 } from 'lucide-react'
-import { deletePost } from './delete-post.action'
+import { deleteComment } from './delete-comment.action'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
 import {
@@ -17,31 +17,36 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
 
-export default function DeletePost({ slug }) {
+export default function DeleteComment({ id }) {
   const router = useRouter()
   const handleDelete = async () => {
     try {
-      await deletePost(slug)
-      router.push('/post')
-      toast('Post deleted successfully ✔️')
+      await deleteComment(id)
+      toast('Comment deleted successfully ✔️')
+      router.refresh()
     } catch (error) {
-      console.error('Failed to delete post:', error)
-      toast('Error while deleting post ❌')
+      console.error('Failed to delete comment:', error)
+      toast('Error while deleting comment ❌')
     }
   }
 
   return (
     <AlertDialog>
       <AlertDialogTrigger>
-        <Button>
-          <Trash2 />
+        <Button
+          variant='ghost'
+          size='xs'
+          className='self-start text-xs text-gray-500 hover:text-gray-700 px-2 rounded-full'
+          onClick={() => setIsEditing(true)}
+        >
+          Delete
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Confirm Deletion</AlertDialogTitle>
           <AlertDialogDescription>
-            Are you sure you want to delete this post? This action cannot be undone.
+            Are you sure you want to delete this comment? This action cannot be undone.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
