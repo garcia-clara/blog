@@ -59,7 +59,7 @@ export default function AddPost() {
       {error && <p className='text-red-500'>{error}</p>}
       <div className='flex justify-end w-full gap-1.5'>
         <Button variant='secondary' asChild>
-          <Link href='/posts' className='w-32'>
+          <Link href='/post' className='w-32'>
             Cancel
           </Link>
         </Button>

@@ -1,5 +1,5 @@
 import prisma from '@/lib/prisma'
-import UpdatePostForm from '@/features/post/update-post/update-post';
+import UpdatePost from '@/features/post/update-post/update-post';
 
 export default async function Page({ params }) {
   const { slug } = params;
@@ -16,7 +16,7 @@ export default async function Page({ params }) {
   return (
     <div className='flex flex-col items-center'>
       <main>
-        <UpdatePostForm post={post} />
+        <UpdatePost post={post} />
       </main>
     </div>
   );
